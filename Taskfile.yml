@@ -1,0 +1,10 @@
+# https://taskfile.dev
+version: '3'
+tasks:
+  run:
+    - go run .
+  open:
+    - open http://127.0.0.1/admin
+  gen:
+    # add new table into adm.ini, then run below
+    - adm generate -c adm.ini

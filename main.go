@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/GoAdminGroup/go-admin/examples/datamodel"
 	"io/ioutil"
 	"log"
 	"os"
@@ -34,7 +35,10 @@ func startServer() {
 
 	eng := engine.Default()
 
-	if err := eng.AddConfigFromJSON("./config.json").AddGenerators(tables.Generators).Use(r); err != nil {
+	if err := eng.AddConfigFromJSON("./config.json").
+		AddGenerators(tables.Generators).
+		AddGenerator("user", datamodel.GetUserTable).
+		Use(r); err != nil {
 		panic(err)
 	}
 
